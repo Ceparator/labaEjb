@@ -5,6 +5,7 @@
  */
 package dao;
 
+import Model.Book;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,8 @@ public class StatefulDAOImpl implements StatefulDAO, Serializable {
     }
 
     @Override
-    public void addBook(String bookName) {
-        bookShelf.add(bookName);
+    public void addBook(Book book) {
+        bookShelf.add(book.getName());
     }
 
     @Override

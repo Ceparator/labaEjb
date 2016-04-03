@@ -3,11 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/StatefulBean.java</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/TaskBean.java</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/userInfo.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/delTask.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/index.html</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/delUser.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/AddTaskBean.java</file>
-            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/addBooks.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/taskInfo.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/addTask.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/addBooks.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/index.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/UserBean.java</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/SingleSomeBean.java</file>
         </group>
     </open-files>
 </project-private>

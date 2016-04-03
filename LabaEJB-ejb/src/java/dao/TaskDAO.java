@@ -5,7 +5,8 @@
  */
 package dao;
 
-import model.Task;
+import Model.Task;
+import Model.Polz;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -20,8 +21,9 @@ public interface TaskDAO {
 
     Task getTaskById(Integer taskId);
 
-    //Task addTask(Task task);
+    List<Polz> getUsers(int idTask);
 
     boolean editTask(Task task);
-
+    
+    void addUserToTask(int idTask, int idUser);
 }

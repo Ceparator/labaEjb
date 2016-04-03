@@ -11,7 +11,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import model.Task;
+import Model.Task;
+import Model.Polz;
+import dao.TaskDAO;
+import java.util.List;
 
 /**
  *
@@ -23,6 +26,8 @@ public class AddTaskBean implements Serializable {
 
     @EJB
     private DelTaskDAO dao;
+    @EJB
+    private TaskDAO taskDAO;
 
     @PostConstruct
     private void initializeBean() {
@@ -34,6 +39,15 @@ public class AddTaskBean implements Serializable {
     private Task task;
     private int c;
     private int editId;
+    private int addId;
+
+    public int getAddId() {
+        return addId;
+    }
+
+    public void setAddId(int addId) {
+        this.addId = addId;
+    }
 
     public int getC() {
         return c;
@@ -65,7 +79,6 @@ public class AddTaskBean implements Serializable {
 
     public String adTask() {
         System.out.println("=========== adTask = " + this);
-        //java.sql.Date newDate = new java.sql.Date(new Date().getTime());
         java.sql.Date newDate = new java.sql.Date(task.getDueDate().getTime());
         task.setDueDate(newDate);
         this.c = dao.addTask(task);
@@ -80,5 +93,24 @@ public class AddTaskBean implements Serializable {
     public String delTask(int idTask) {
         this.c = dao.deleteTask(idTask);
         return "/index.xhtml";
+    }
+
+    public String toTheTaskUsers(int idTask) {
+        this.editId = idTask;
+        return "/taskInfo.xhtml";
+    }
+
+    public List<Polz> selectTaskUsers(int idTask) {
+        List<Polz> u = taskDAO.getUsers(idTask);
+        return u;
+    }
+
+    public String addUserToTask(int idTask) {
+        taskDAO.addUserToTask(idTask, addId);
+        return "/taskInfo.xhtml";
+    }
+    
+    public String getTask(int idTask){
+        return taskDAO.getTaskById(idTask).getName();
     }
 }

@@ -7,7 +7,8 @@ package beans;
 
 import dao.SomeInterfaceImpl;
 import dao.TaskDAO;
-import model.Task;
+import Model.Task;
+import Model.Polz;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,10 +33,9 @@ public class TaskBean implements Serializable {
         for (Task t : list) {
             int d = t.getDescription().length();
             String s = someInterfaceImpl.checkLength(d);
-            t.setDescription(t.getDescription()+s);
+            t.setDescription(t.getDescription() + s);
             taskDAO.editTask(t);
         }
         return list;
     }
-
 }

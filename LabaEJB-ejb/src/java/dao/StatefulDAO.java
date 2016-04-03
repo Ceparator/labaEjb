@@ -5,6 +5,7 @@
  */
 package dao;
 
+import Model.Book;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -15,7 +16,7 @@ import javax.ejb.Remote;
 @Remote
 public interface StatefulDAO {
 
-    void addBook(String bookName);
+    void addBook(Book book);
 
     List<String> getBooks();
 }

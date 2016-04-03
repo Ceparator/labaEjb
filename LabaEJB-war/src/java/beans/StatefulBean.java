@@ -5,14 +5,13 @@
  */
 package beans;
 
+import Model.Book;
 import dao.StatefulDAO;
-import dao.StatefulDAOImpl;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 
 /**
  *
@@ -40,7 +39,7 @@ public class StatefulBean implements Serializable{
     
     public String addBook() {
         String bookName = name; 
-        statefulDAOImpl.addBook(bookName);
+        statefulDAOImpl.addBook(new Book(bookName));
         return "/addBooks.xhtml";
     }
     
@@ -48,5 +47,4 @@ public class StatefulBean implements Serializable{
         List<String> bookList = statefulDAOImpl.getBooks();
         return bookList;
     }
-    
 }

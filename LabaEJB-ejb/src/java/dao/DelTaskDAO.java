@@ -5,7 +5,7 @@
  */
 package dao;
 
-import model.Task;
+import Model.Task;
 import javax.ejb.Remote;
 
 /**
@@ -14,6 +14,8 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface DelTaskDAO {
+
     int deleteTask(int idTask);
+
     int addTask(Task task);
 }

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Task work</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputLabel value="Задача #{addTaskBean.getTask(addTaskBean.editId)}"/>
+            <br/>        
+            <h:dataTable var="us" value="#{addTaskBean.selectTaskUsers(addTaskBean.editId)}"
+                         border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header"> id_user </f:facet>
+                    <h:outputText value="#{us.idPolz}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Username </f:facet>
+                    <h:outputText value="#{us.username}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+            <br/><br/>
+            <h:outputLabel value="Добавить батрака к задаче"/>
+            <br/>
+            <h:selectOneMenu value="#{addTaskBean.addId}"> 
+                <f:selectItems value="#{userBean.selectUsers()}" var="user" 
+                               itemValue="#{user.idPolz}" itemLabel="#{user.username}" /> 
+            </h:selectOneMenu>
+            <br/>
+            <h:commandButton  value="Add user to the task" action="#{addTaskBean.addUserToTask(addTaskBean.editId)}"/>  
+            <br/><br/>
+            <h:commandLink value="Homyak" action="/index.xhtml" />
+        </h:form>
+    </h:body>
+</html>
+

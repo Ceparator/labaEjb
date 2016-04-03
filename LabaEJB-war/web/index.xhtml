@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Main page</title>
     </h:head>
     <h:body>
         <h:form>
@@ -12,7 +12,7 @@
                          border="1" cellpadding="2" cellspacing="2">
                 <h:column>
                     <f:facet name="header"> id_task </f:facet>
-                    <h:outputText value="#{t.id}"></h:outputText>
+                    <h:outputText value="#{t.idTask}"></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header"> Name </f:facet>
@@ -27,7 +27,10 @@
                     <h:outputText value="#{t.dueDate}"></h:outputText>
                 </h:column>
                 <h:column>
-                    <h:commandButton  value="Delete task" action="#{addTaskBean.toTheDelTask(t.id)}"/>  
+                    <h:commandButton  value="Delete task" action="#{addTaskBean.toTheDelTask(t.idTask)}"/>  
+                </h:column>
+                <h:column>
+                    <h:commandButton  value="Task info" action="#{addTaskBean.toTheTaskUsers(t.idTask)}"/>  
                 </h:column>
             </h:dataTable>
             <br/><br/>
@@ -41,9 +44,31 @@
             <br/><br/>
             <h:outputLabel value="Created without delete = #{addTaskBean.c}" for="count"/>
             <br/><br/>
+
+
+            <h:dataTable var="u" value="#{userBean.selectUsers()}"
+                         border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header"> id_user </f:facet>
+                    <h:outputText value="#{u.idPolz}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Username </f:facet>
+                    <h:outputText value="#{u.username}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <h:commandButton  value="Delete user" action="#{userBean.toTheDelUser(u.idPolz)}"/>  
+                </h:column>
+                <h:column>
+                    <h:commandButton  value="User info" action="#{userBean.toTheUserTasks(u.idPolz)}"/>  
+                </h:column>
+            </h:dataTable>
+            <br/><br/>
             <h:commandLink value="Add task" action="/addTask.xhtml" />
             <br/><br/>
             <h:commandLink value="Add book" action="/addBooks.xhtml" />
+            <br/><br/>
+            <h:commandLink value="Add user" action="/addUser.xhtml" />
         </h:form>
     </h:body>
 </html>
