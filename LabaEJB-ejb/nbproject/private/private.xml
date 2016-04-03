@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/dao/DelTaskDAOImpl.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/Model/Task.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/dao/JpaDAOImpl.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/dao/TaskDAOImpl.java</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/dao/TaskDAO.java</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/dao/DelTaskDAO.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/Model/Polz.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/Model/Book.java</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-ejb/src/java/dao/JpaDAO.java</file>
         </group>
     </open-files>
 </project-private>

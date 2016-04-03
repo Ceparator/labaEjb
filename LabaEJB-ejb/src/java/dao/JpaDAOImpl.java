@@ -60,4 +60,21 @@ public class JpaDAOImpl implements JpaDAO {
     public Polz getUserById(int idUser) {
         return em.find(Polz.class, idUser);
     }
+
+    @Override
+    public List<Polz> listUsersForTask(int idTask) {
+        Query query = em.createQuery("SELECT u FROM Polz u", Polz.class);
+        List<Polz> fullList = query.getResultList();
+        Task task = em.getReference(Task.class, idTask);
+        List<Polz> newList = task.getPolzs();
+        fullList.removeAll(newList);
+        return fullList;
+    }
+
+    @Override
+    public void deleteTaskFromUser(int idUser, int idTask) {
+        Task task = em.getReference(Task.class, idTask);
+        Polz polz = em.getReference(Polz.class, idUser);
+        polz.getTasks().remove(task);
+    }
 }

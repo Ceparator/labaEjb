@@ -8,6 +8,7 @@ package beans;
 import Model.Task;
 import Model.Polz;
 import dao.JpaDAO;
+import dao.TaskDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -25,6 +26,9 @@ public class UserBean implements Serializable {
 
     @EJB
     private JpaDAO jpaDAO;
+    
+    @EJB
+    private TaskDAO taskDAO;
 
     private Polz user;
     private int editId;
@@ -45,6 +49,11 @@ public class UserBean implements Serializable {
 
     public List<Polz> selectUsers() {
         List<Polz> list = jpaDAO.listAllUsers();
+        return list;
+    }
+    
+    public List<Task> selectTasksForUser(int idUser) {
+        List<Task> list = taskDAO.listTasksForUser(idUser);
         return list;
     }
 
@@ -75,6 +84,11 @@ public class UserBean implements Serializable {
 
     public String addTaskToUser(int idUser) {
         jpaDAO.addTaskToUser(idUser, addId);
+        return "/userInfo.xhtml";
+    }
+    
+    public String deleteTaskFromUser(int idUser, int idTask) {
+        jpaDAO.deleteTaskFromUser(idUser, idTask);
         return "/userInfo.xhtml";
     }
     

@@ -34,67 +34,17 @@ public class TaskDAOImpl implements TaskDAO {
 
     @Override
     public List<Task> listAllTasks() {
-        /*try (Connection connection = dataSource.getConnection()) {
-        ArrayList<Task> taskList = new ArrayList<>();
-        String query = "SELECT * FROM task";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        ResultSet resultSet = stmt.executeQuery();
-        while (resultSet.next()) {
-        Task t = new Task(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getDate(4));
-        taskList.add(t);
-        }
-        return taskList;
-        } catch (Exception e) {
-        throw new RuntimeException("An error has occurred in listAllTasks method", e);
-        } finally {
-        try {
-        dataSource.getConnection().close();
-        } catch (SQLException ex) {
-        Logger.getLogger(TaskDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }*/
         Query query = em.createQuery("SELECT t FROM Task t", Task.class);
         return query.getResultList();
     }
 
     @Override
     public Task getTaskById(Integer taskId) {
-        /*try (Connection connection = dataSource.getConnection()) {
-        String query = "SELECT * from task WHERE idTask=?";
-        PreparedStatement statement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-        statement.setInt(1, taskId);
-        ResultSet results = statement.executeQuery();
-        if (results.next()) {
-        Task task = new Task();
-        task.setIdTask(taskId);
-        task.setName(results.getString(2));
-        task.setDescription(results.getString(3));
-        task.setDueDate(results.getDate(4));
-        return task;
-        } else {
-        return null;
-        }
-        } catch (Exception e) {
-        throw new RuntimeException("Произошла ошибка во время вызова метода getTaskById", e);
-        }*/
         return em.find(Task.class, taskId);
     }
 
     @Override
     public boolean editTask(Task task) {
-        /*try (Connection connection = dataSource.getConnection()) {
-        String query = "UPDATE task SET name=?, description=?, due_date=? WHERE idTask=?";
-        PreparedStatement statement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-        statement.setString(1, task.getName());
-        statement.setString(2, task.getDescription());
-        statement.setDate(3, (Date) task.getDueDate());
-        statement.setInt(4, task.getIdTask());
-        statement.execute();
-        return true;
-        } catch (Exception e) {
-        throw new RuntimeException("Произошла ошибка во время вызова метода editTask", e);
-        }
-        }*/
         try {
             em.merge(task);
             return true;
@@ -113,5 +63,22 @@ public class TaskDAOImpl implements TaskDAO {
     public void addUserToTask(int idTask, int idUser) {
         Task task = em.getReference(Task.class, idTask);
         task.getPolzs().add(em.getReference(Polz.class, idUser));
+    }
+
+    @Override
+    public List<Task> listTasksForUser(int idPolz) {
+        Query query = em.createQuery("SELECT t FROM Task t", Task.class);
+        List<Task> fullList = query.getResultList();
+        Polz user = em.getReference(Polz.class, idPolz);
+        List<Task> newList = user.getTasks();
+        fullList.removeAll(newList);
+        return fullList;
+    }
+
+    @Override
+    public void deleteUserFromTask(int idTask, int idUser) {
+        Task task = em.getReference(Task.class, idTask);
+        Polz polz = em.getReference(Polz.class, idUser);
+        task.getPolzs().remove(polz);
     }
 }

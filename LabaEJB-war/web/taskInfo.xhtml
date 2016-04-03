@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Task work</title>
     </h:head>
@@ -20,17 +21,29 @@
                     <f:facet name="header"> Username </f:facet>
                     <h:outputText value="#{us.username}"></h:outputText>
                 </h:column>
+                <h:column>
+                    <h:commandButton  value="Free the user!" action="#{addTaskBean.deleteUserFromTask(addTaskBean.editId, us.idPolz)}"/>  
+                </h:column>
             </h:dataTable>
             <br/><br/>
-            <h:outputLabel value="Добавить батрака к задаче"/>
-            <br/>
-            <h:selectOneMenu value="#{addTaskBean.addId}"> 
-                <f:selectItems value="#{userBean.selectUsers()}" var="user" 
-                               itemValue="#{user.idPolz}" itemLabel="#{user.username}" /> 
-            </h:selectOneMenu>
-            <br/>
-            <h:commandButton  value="Add user to the task" action="#{addTaskBean.addUserToTask(addTaskBean.editId)}"/>  
-            <br/><br/>
+            <c:choose>
+                <c:when test="#{addTaskBean.selectUsersForTask(addTaskBean.editId).size() eq 0}">
+                    <p>
+                        Для этого задачи нет свободных пользователей!
+                    </p>
+                </c:when>
+                <c:otherwise>
+                    <h:outputLabel value="Добавить батрака к задаче"/>
+                    <br/>
+                    <h:selectOneMenu value="#{addTaskBean.addId}"> 
+                        <f:selectItems value="#{addTaskBean.selectUsersForTask(addTaskBean.editId)}" var="user" 
+                                       itemValue="#{user.idPolz}" itemLabel="#{user.username}" /> 
+                    </h:selectOneMenu>
+                    <br/>
+                    <h:commandButton  value="Add user to the task" action="#{addTaskBean.addUserToTask(addTaskBean.editId)}"/>
+                    <br/><br/>
+                </c:otherwise>
+            </c:choose>
             <h:commandLink value="Homyak" action="/index.xhtml" />
         </h:form>
     </h:body>

@@ -5,12 +5,15 @@
         <group>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/userInfo.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/delTask.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/TaskBean.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/delUser.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/AddTaskBean.java</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/taskInfo.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/addBooks.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/addTask.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/index.xhtml</file>
             <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/web/addUser.xhtml</file>
+            <file>file:/C:/Users/Ceparator/Documents/NetBeansProjects/labEjb-master/LabaEJB-war/src/java/beans/UserBean.java</file>
         </group>
     </open-files>
 </project-private>

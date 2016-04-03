@@ -57,41 +57,13 @@ public class DelTaskDAOImpl implements DelTaskDAO, Serializable {
     @Override
     public int deleteTask(int idTask) {
         em.remove(em.getReference(Task.class, idTask));
-        /*try (Connection connection = dataSource.getConnection()) {
-        String query = "DELETE FROM task WHERE idTask=?";
-        PreparedStatement statement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-        statement.setInt(1, idTask);
-        statement.execute();
-        endConversation();
-        return count;
-        } catch (Exception e) {
-        throw new RuntimeException("Произошла ошибка во время вызова метода deleteTask", e);
-        }*/
         endConversation();
         return count;
     }
 
     @Override
     public int addTask(Task task) {
-
         em.persist(task);
-        /*try (Connection connection = dataSource.getConnection()) {
-        String query = "INSERT INTO task (name, description, due_date) VALUES (?, ?, ?)";
-        PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-        stmt.setString(1, task.getName());
-        stmt.setString(2, task.getDescription());
-        stmt.setTimestamp(3, new Timestamp(task.getDueDate().getTime()));
-        stmt.executeUpdate();
-        
-        } catch (Exception e) {
-        throw new RuntimeException("An error has occurred in addTask method", e);
-        } finally {
-        try {
-        dataSource.getConnection().close();
-        } catch (SQLException ex) {
-        Logger.getLogger(TaskDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }*/
         if (conversation.isTransient()) {
             conversation.begin();
         }

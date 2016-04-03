@@ -13,6 +13,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import Model.Task;
 import Model.Polz;
+import dao.JpaDAO;
 import dao.TaskDAO;
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class AddTaskBean implements Serializable {
     private DelTaskDAO dao;
     @EJB
     private TaskDAO taskDAO;
+    @EJB
+    private JpaDAO jpaDAO;
 
     @PostConstruct
     private void initializeBean() {
@@ -112,5 +115,15 @@ public class AddTaskBean implements Serializable {
     
     public String getTask(int idTask){
         return taskDAO.getTaskById(idTask).getName();
+    }
+    
+    public List<Polz> selectUsersForTask(int idTask) {
+        List<Polz> list = jpaDAO.listUsersForTask(idTask);
+        return list;
+    }
+    
+    public String deleteUserFromTask(int idTask, int idUser) {
+        taskDAO.deleteUserFromTask(idTask, idUser);
+        return "/taskInfo.xhtml";
     }
 }

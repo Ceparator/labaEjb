@@ -20,14 +20,18 @@ public interface JpaDAO {
     void deleteUser(int idUser);
 
     void addUser(Polz user);
-    
+
     List<Polz> listAllUsers();
 
     void editUser(Polz user);
-    
+
     List<Task> getUserTasks(int idUser);
-    
+
     void addTaskToUser(int idUser, int idTask);
-    
+
     Polz getUserById(int idUser);
+
+    List<Polz> listUsersForTask(int idTask);
+
+    void deleteTaskFromUser(int idUser, int idTask);
 }

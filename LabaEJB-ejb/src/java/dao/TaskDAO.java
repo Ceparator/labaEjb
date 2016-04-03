@@ -19,11 +19,16 @@ public interface TaskDAO {
 
     List<Task> listAllTasks();
 
+    List<Task> listTasksForUser(int idPolz);
+
     Task getTaskById(Integer taskId);
 
     List<Polz> getUsers(int idTask);
 
     boolean editTask(Task task);
-    
+
     void addUserToTask(int idTask, int idUser);
+
+    void deleteUserFromTask(int idTask, int idUser);
+
 }
