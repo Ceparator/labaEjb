@@ -50,7 +50,8 @@ public class Polz implements Serializable {
     @Column(name = "username")
     private String username;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade
+            = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "polzs_tasks",
             joinColumns = @JoinColumn(name = "idPolz", referencedColumnName = "idPolz"),
             inverseJoinColumns = @JoinColumn(name = "idTask", referencedColumnName = "idTask"))

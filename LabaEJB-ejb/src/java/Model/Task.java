@@ -65,7 +65,8 @@ public class Task implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dueDate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade
+            = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "polzs_tasks",
             joinColumns = @JoinColumn(name = "idTask", referencedColumnName = "idTask"),
             inverseJoinColumns = @JoinColumn(name = "idPolz", referencedColumnName = "idPolz"))
