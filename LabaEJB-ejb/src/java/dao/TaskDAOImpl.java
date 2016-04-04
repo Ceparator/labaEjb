@@ -63,6 +63,8 @@ public class TaskDAOImpl implements TaskDAO {
     public void addUserToTask(int idTask, int idUser) {
         Task task = em.getReference(Task.class, idTask);
         task.getPolzs().add(em.getReference(Polz.class, idUser));
+        Polz user = em.getReference(Polz.class, idUser);
+        user.getTasks().add(em.getReference(Task.class, idTask));
     }
 
     @Override

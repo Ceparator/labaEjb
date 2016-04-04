@@ -54,6 +54,8 @@ public class JpaDAOImpl implements JpaDAO {
     public void addTaskToUser(int idUser, int idTask) {
         Polz user = em.getReference(Polz.class, idUser);
         user.getTasks().add(em.getReference(Task.class, idTask));
+        Task task = em.getReference(Task.class, idTask);
+        task.getPolzs().add(em.getReference(Polz.class, idUser));
     }
 
     @Override
